@@ -1,9 +1,9 @@
 // activitiesService.js
 import axios from "axios";
 
-const baseURL = "/activity"; // Base URL for activities endpoints
+const baseURL = "/activity";
 
-const fetchActivities = async () => {
+const getActivities = async () => {
   try {
     const response = await axios.get(`${baseURL}/all`);
     return response.data;
@@ -60,8 +60,8 @@ const deleteActivities = async (activityId) => {
 };
 
 export {
-  fetchActivitiess,
-  getActivitiesById,
+  getActivities,
+  getActivityById,
   createActivities,
   updateActivities,
   deleteActivities,

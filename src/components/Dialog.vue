@@ -1,26 +1,22 @@
 <template>
-  <div class="text-center pa-4">
+  <div class="text-center">
     <v-dialog
       v-model="showDialog"
       max-width="400"
-      persistent
     >
       <v-card  flat>
         <v-toolbar class="bg-deep-purple text-h6 text-center ps-5">{{ title }}</v-toolbar>
         <div>
-          <slot></slot>
+          <slot name="body"></slot>
         </div>
 
         <v-divider flat></v-divider>
           <template v-slot:actions>
             <v-spacer></v-spacer>
 
-            <v-btn @click="buttonClick">
-              Confirma
-            </v-btn>
-
+            <slot name="buttons"></slot>
             <v-btn @click="showDialog = false">
-              Cancela
+              Cancelar
             </v-btn>
           </template>
         </v-card>
@@ -30,18 +26,12 @@
 
 <script setup>
   const showDialog = defineModel({default: false})
-  const emit = defineEmits(['confirm'])
 
   defineProps({
     title: String
   })
 
-  const confirm = () => {
-    emit('confirm');
-    closeModal();
-  };
-
   const closeModal = () => {
-    showDialog = false
+    showDialog.value = false
   };
 </script>

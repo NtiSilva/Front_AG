@@ -1,9 +1,9 @@
 // clientService.js
 import axios from "axios";
 
-const baseURL = "/client"; // Base URL for client endpoints
+const baseURL = "/clients";
 
-const fetchClients = async () => {
+const getClients = async () => {
   try {
     const response = await axios.get(`${baseURL}/all`);
     return response.data;
@@ -53,10 +53,4 @@ const deleteClient = async (clientId) => {
   }
 };
 
-export {
-  fetchClients,
-  getClientById,
-  createClient,
-  updateClient,
-  deleteClient,
-};
+export { getClients, getClientById, createClient, updateClient, deleteClient };

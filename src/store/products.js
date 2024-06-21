@@ -8,11 +8,15 @@ import {
 
 const state = {
   products: [],
+  product: {},
 };
 
 const mutations = {
   SET_PRODUCTS(state, products) {
     state.products = products;
+  },
+  SET_PRODUCT(state, product) {
+    state.product = product;
   },
 };
 
@@ -46,14 +50,20 @@ const actions = {
       await deleteProduct(productId);
       dispatch("fetchProducts");
     } catch (error) {
-      console.error("Error removing product:", error);
+      console.error("Erro ao excluir projeto!", error.response);
     }
+  },
+  setProduct({ commit }, product) {
+    commit("SET_PRODUCT", product);
   },
 };
 
 const getters = {
   getProductById: (state) => (productId) => {
     return state.products.find((product) => product.id === productId);
+  },
+  getProduct: (state) => {
+    return state.product;
   },
 };
 

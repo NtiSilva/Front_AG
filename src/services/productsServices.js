@@ -1,7 +1,7 @@
 // productsService.js
 import axios from "axios";
 
-const baseURL = "/project"; // Base URL for product endpoints
+const baseURL = "/project";
 
 const getProducts = async () => {
   try {
